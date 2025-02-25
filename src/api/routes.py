@@ -12,7 +12,7 @@ api = Blueprint('api', __name__)
 CORS(api)
 
 
-# User Endpoints
+# User Endpoints 
 @api.route('/users', methods=['GET'])
 def get_users():
     users = Users.query.all()
@@ -49,7 +49,7 @@ def get_planets():
     return jsonify([planet.serialize() for planet in planets])
 
 @api.route('/planets/<int:planets_id>', methods=['GET'])
-def get_character(planets_id):
+def get_planet(planets_id):
     planet = Planets.query.get(planets_id)
     if planet is None:
         return jsonify({"error": "Character not found"}), 404
